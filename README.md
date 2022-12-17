@@ -16,3 +16,15 @@ Nest utiliza ts por defecto
 
 ## 5/23 Repaso a TypeScript: tipos y POO
 
+## 6/23 Introducción a controladores
+Los controladores se encargan de recibir las request.
+- Reciben los request
+- Manipulan los request
+- Validan permisos
+- Validan valores
+- Conecta los servicios
+Manejo de decoradores, para que nest le diga a una clase de ts como comportarse para el funcionamiento de nest.
+
+#### _Arquitectura de una aplicación_
+<img src="./src/image/arquitectura_de_una_aplicacion.png">
+
