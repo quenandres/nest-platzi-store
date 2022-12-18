@@ -41,3 +41,17 @@ getCategories(@Param('categoryId') categoryId:string, @Param('productId') produc
   return `Category = ${categoryId} | Producto = ${productId}`;
 }
 ```
+
+## 8/23 GET: parámetros query
+
+```ts
+@Get('products')
+getProducts(
+  @Query('limit') limit: number = 1,
+  @Query('offset') offset: number = 0,
+  @Query('brand') brand: string
+) {
+  return `limit = ${limit} | Offset = ${offset} | brand = ${brand}`;
+}
+```
+>Es recomendado poner rutas estaticas primero que las rutas dinamicas, para evitar errores.
