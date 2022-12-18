@@ -28,3 +28,16 @@ Manejo de decoradores, para que nest le diga a una clase de ts como comportarse 
 #### _Arquitectura de una aplicación_
 <img src="./src/image/arquitectura_de_una_aplicacion.png">
 
+## 7/23 GET: cómo recibir parámetros
+
+```ts
+@Get('products/:productId')
+getProduct(@Param('productId') productId:string ): string {
+  return `Producto = ${productId}`;
+}
+
+@Get('categories/:categoryId/products/:productId')
+getCategories(@Param('categoryId') categoryId:string, @Param('productId') productId:string ): string {
+  return `Category = ${categoryId} | Producto = ${productId}`;
+}
+```
