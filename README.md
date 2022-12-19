@@ -55,3 +55,25 @@ getProducts(
 }
 ```
 >Es recomendado poner rutas estaticas primero que las rutas dinamicas, para evitar errores.
+
+## 9/23 Separación de responsabilidades
+La _S_ en los principios _SOLID_.
+```ts
+  @Get('categories/filter')
+  getProductFilter(): string {
+    return `Yo soy un filter`;
+  }
+```
+>
+```ts
+@Controller('categories')
+```
+Con esta especificación del controller no es necesario poner la ruta completa en cada _*@Get()*_
+```ts
+  @Get('filter')
+  getProductFilter(): string {
+    return `Yo soy un filter`;
+  }
+```
+
+
