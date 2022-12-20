@@ -125,3 +125,50 @@ En nest podremos decidir si por debajo queremos usar Express o algun otro framew
 ```ts
 @HttpCode(HttpStatus.CREATED) // 201
 ```
+
+## 14/23 Introducción a servicios: crea tu primer servicio
+Los servicios tienen un decorador especial
+```ts
+@Injectable()
+```
+El cual utiliza un patrón llamado inyección de dependencias.
+
+> Comando
+```bash
+nest g s services/product --flat
+```
+El __--flat__ lo utilizamos para que no nos cree una subcarpeta.
+
+#### Creación de entidad
+Entidad:
+```ts
+export class Product {
+    id: number;
+    name: string;
+    description: string;
+    price: number;
+    stock: number;
+    image: string;
+}
+```
+
+Servicio:
+```ts
+import { Injectable } from '@nestjs/common';
+import { Product } from 'src/entities/product.entity';
+
+@Injectable()
+export class ProductService {
+    private products: Product[] = [
+        {
+            id:1,
+            name: 'Producto 1 memoria',
+            description: 'Texto de descripcion',
+            price: 11200,
+            image: '',
+            stock: 1500
+        }
+    ];
+}
+```
+
