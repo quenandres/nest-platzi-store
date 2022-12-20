@@ -77,3 +77,18 @@ Con esta especificación del controller no es necesario poner la ruta completa e
 ```
 
 
+## 11/23 Qué es el método POST
+@Post: Decorador para solicitudes post.
+>
+@Body: Decorador cuerpo de las solicitudes.
+>
+@Res: Decorador de respuesta.
+```ts
+@Post('')
+create(@Res() res: Response, @Body() payload: any ) {
+    return res.status(201).json({
+        message: 'Creacion de categoria',
+        body: payload
+    })
+}
+```

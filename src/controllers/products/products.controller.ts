@@ -1,4 +1,5 @@
-import { Controller, Get, Param, Query } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post, Query, Res } from '@nestjs/common';
+import { Response } from 'express';
 
 @Controller('products')
 export class ProductsController {
@@ -9,8 +10,10 @@ export class ProductsController {
   }
 
   @Get(':productId')
-  getProduct(@Param('productId') productId: string): string {
-    return `Producto = ${productId}`;
+  getProduct(@Param('productId') productId: string) {
+    return {
+      message: `Producto = ${productId}`
+    }
   }  
 
   @Get('')
@@ -19,7 +22,21 @@ export class ProductsController {
     @Query('offset') offset: number = 0,
     @Query('brand') brand: string
   ) {
-    return `limit = ${limit} | Offset = ${offset} | brand = ${brand}`;
+    return {
+      message: `limit = ${limit} | Offset = ${offset} | brand = ${brand}`
+    };    
+  }
+
+
+  @Post('')
+  postProducto(@Res() res: Response, @Body() payload: any) {
+    console.log('res');
+    console.log(res);
+    
+    return res.status(201).json({
+      msg: 'Add a new product',
+      payload,
+    });
   }
 
 }
