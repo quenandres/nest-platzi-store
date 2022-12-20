@@ -112,3 +112,16 @@ delete(@Res() res: Response, @Param() id: number) {
   });
 }
 ```
+
+## 13/23 Códigos de estado o HTTP response status codes
+- Respuestas informativas (100–199),
+- Respuestas satisfactorias (200–299),
+- Redirecciones (300–399),
+- Errores de los clientes (400–499),
+- Errores de los servidores (500–599).
+
+En nest podremos decidir si por debajo queremos usar Express o algun otro framework.
+
+```ts
+@HttpCode(HttpStatus.CREATED) // 201
+```
