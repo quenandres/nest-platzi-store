@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Param, Post, Query, Res } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post, Query, Res, Put, Delete } from '@nestjs/common';
 import { Response } from 'express';
 
 @Controller('products')
@@ -28,14 +28,27 @@ export class ProductsController {
   }
 
 
-  @Post('')
-  postProducto(@Res() res: Response, @Body() payload: any) {
-    console.log('res');
-    console.log(res);
-    
+  @Post()
+  create(@Res() res: Response, @Body() payload: any) {    
     return res.status(201).json({
-      msg: 'Add a new product',
+      message: 'Add a new product',
       payload,
+    });
+  }
+
+  @Put(':id')
+  update(@Res() res: Response, @Param() id: number, @Body() payload: any) {
+    return res.status(200).json({
+      id,
+      payload
+    })
+  }
+
+  @Delete(':id')
+  delete(@Res() res: Response, @Param() id: number) {
+    return res.status(200).json({
+      message: 'Elimina producto',
+      id
     });
   }
 

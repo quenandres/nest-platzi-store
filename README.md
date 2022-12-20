@@ -92,3 +92,23 @@ create(@Res() res: Response, @Body() payload: any ) {
     })
 }
 ```
+
+## 12/23 Métodos PUT y DELETE para editar y eliminar
+
+```ts
+@Put(':id')
+update(@Res() res: Response, @Param() id: number, @Body() payload: any) {
+  return res.status(200).json({
+    id,
+    payload
+  })
+}
+
+@Delete(':id')
+delete(@Res() res: Response, @Param() id: number) {
+  return res.status(200).json({
+    message: 'Elimina producto',
+    id
+  });
+}
+```
