@@ -58,11 +58,12 @@ export class ProductsController {
   }
 
   @Delete(':id')
-  delete(@Res() res: Response, @Param() id: number) {
-    return res.status(200).json({
+  delete(@Res() res: Response, @Param('id', ParseIntPipe) id: number) {
+    /*return res.status(200).json({
       message: 'Elimina producto',
       id
-    });
+    });*/
+    return res.json(this.productService.delete(id))
   }
 
 }

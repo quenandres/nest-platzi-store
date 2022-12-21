@@ -183,3 +183,6 @@ get(@Res() res: Response, @Param('id', ParseIntPipe) id: number) {
 ```
 
 Al invocar el decorador _@Res()_ le estamos diciendo a nest que vamos a utilizar este metodo para retornar los valores.
+
+## 16/23 Manejo de errores con throw y NotFoundException
+*NotFoundException* Para manejo de errores desde el servicio.
