@@ -172,3 +172,14 @@ export class ProductService {
 }
 ```
 
+## 15/23 Implementando servicios en tu controlador
+
+_@ParseIntPipe_: Este decorador transforma los valores a entero para evitar errores al transformar el ts en js.
+```ts
+get(@Res() res: Response, @Param('id', ParseIntPipe) id: number) {
+  const product = this.productService.findOne(id)
+  return res.json(product);
+}  
+```
+
+Al invocar el decorador _@Res()_ le estamos diciendo a nest que vamos a utilizar este metodo para retornar los valores.

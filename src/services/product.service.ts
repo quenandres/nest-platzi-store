@@ -19,8 +19,9 @@ export class ProductService {
         return this.products;
     }
 
-    findOne(id: number) {
-        return this.products.find(item => item.id === id);
+    findOne(id: number) {  
+        const product = this.products.find( item => item.id === id ) || null;
+        return product;        
     }
 
     create(payload: any) {
@@ -30,20 +31,21 @@ export class ProductService {
             ...payload
         }
         this.products.push(newProduct);
-        return newProduct;
+        return this.products.length;
     }
 
     update(id: number, payload: Product) {
         const current = this.findOne(id);
         if( current ) {
             const index = this.products.findIndex(item => item.id === id );
+            
             this.products[index] = {
                 ...current,
                 ...payload,
                 id
-            }
+            }       
 
-            return current;
+            return this.products[index];
         }
         return null;
     }
