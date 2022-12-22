@@ -187,10 +187,13 @@ Al invocar el decorador _@Res()_ le estamos diciendo a nest que vamos a utilizar
 ## 16/23 Manejo de errores con throw y NotFoundException
 *NotFoundException* Para manejo de errores desde el servicio.
 
-# 17/23 Introducción a pipes: usa tu primer pipe
+## 17/23 Introducción a pipes: usa tu primer pipe
 Los pipes tienen dos funciones principales validar y transformar.
 *transformación*: transforma los datos de entrada a la forma deseada (por ejemplo, de cadena a entero).
 *validación*: evalúe los datos de entrada y, si son válidos, simplemente páselos sin cambios; de lo contrario, lanza una excepción cuando los datos son incorrectos.
 
+## 18/23 Crea tu propio pipe
 
-
+```bash 
+nest g pipe common/parse-int
+```
