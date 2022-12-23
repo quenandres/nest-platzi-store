@@ -197,3 +197,27 @@ Los pipes tienen dos funciones principales validar y transformar.
 ```bash 
 nest g pipe common/parse-int
 ```
+
+## 19/23 Creando Data Transfers Objects
+
+Para validar grupos de datos que vienen en el body, se debe implementar el patron _dataTransferObjects_. DTO.
+
+Los Data Transfers Objects (DTO) nos permite tipar y validar los datos que provienen de la petición (body)
+
+```ts
+export class CreateProductDto {
+  readonly name:string;
+  readonly description:string;
+  readonly price:number;
+  readonly stock:number;
+  readonly image:string;
+}
+
+export class UpdateProductDto {
+  readonly name?:string;
+  readonly description?:string;
+  readonly price?:number;
+  readonly stock?:number;
+  readonly image?:string;
+}
+```
