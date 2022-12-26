@@ -8,11 +8,11 @@ export class ProductService {
     private products: Product[] = [
         {
             id:1,
-            name: 'Producto 1 memoria',
-            description: 'Texto de descripcion',
-            price: 11200,
-            image: '',
-            stock: 1500
+            name:'test',
+            description: 'blabla bla',
+            image: 'adwawdadw',
+            price: 123123,
+            stock: 12
         }
     ];
 
@@ -20,8 +20,8 @@ export class ProductService {
         return this.products;
     }
 
-    findOne(id: number) {  
-        const product = this.products.find( item => item.id === id );
+    findOne(id: number) {
+        const product = this.products.find( (item) => item.id === id );
         if( !product ) {
             throw new NotFoundException(`Product #${id} not found`);
         }

@@ -9,13 +9,14 @@ import { Body,
   Delete,
   HttpStatus,
   HttpCode,
-  //ParseIntPipe
+  ParseIntPipe
 } from '@nestjs/common';
 import { Response } from 'express';
 
-import { ParseIntPipe } from '../../common/parse-int/parse-int.pipe';
+//import { ParseIntPipe } from '../../common/parse-int/parse-int.pipe';
 import { ProductService } from '../../services/product.service';
 import { CreateProductDto, UpdateProductDto } from '../../dtos/products.dtos';
+import { Product } from '../../entities/product.entity';
 
 @Controller('products')
 export class ProductsController {
@@ -30,7 +31,7 @@ export class ProductsController {
   @Get(':id')
   @HttpCode(HttpStatus.ACCEPTED)
   get(@Res() res: Response, @Param('id', ParseIntPipe) id: number) {
-    const product = this.productService.findOne(id)
+    const product = this.productService.findOne(id);
     return res.json(product);
   }  
 
@@ -46,7 +47,8 @@ export class ProductsController {
 
   @Post()
   @HttpCode(HttpStatus.CREATED)
-  create(@Res() res: Response, @Body() payload: CreateProductDto) {    
+  create(@Res() res: Response, @Body() payload: CreateProductDto) {   
+    console.log(payload);     
     return res.json({count: this.productService.create(payload)});
   }
 
@@ -55,7 +57,7 @@ export class ProductsController {
     /*return res.status(200).json({
       id,
       payload
-    })*/
+    })*/    
     return res.json(this.productService.update(id, payload));
   }
 

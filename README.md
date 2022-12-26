@@ -221,3 +221,71 @@ export class UpdateProductDto {
   readonly image?:string;
 }
 ```
+
+## 20/23 Validando parámetros con class-validator y mapped-types
+
+```bash
+npm i class-validator class-transformer @nestjs/mapped-types
+```
+
+Con los dto, agregamos decoradores para agregarles funcionamiento y poder validar valores.
+Agregamos el _ValidationPipe()_
+
+*products.dtos.ts*
+```ts
+export class CreateProductDto {
+    @IsString()
+    @IsNotEmpty()
+    readonly name:string;
+
+    @IsString()
+    @IsNotEmpty()
+    readonly description:string;
+
+    @IsNumber()
+    @IsNotEmpty()
+    readonly price:number;
+
+    @IsNumber()
+    @IsNotEmpty()
+    readonly stock:number;
+
+    @IsUrl()
+    @IsNotEmpty()
+    readonly image:string;
+}
+```
+
+*main.js*
+```ts
+import { NestFactory } from '@nestjs/core';
+import { AppModule } from './app.module';
+import { ValidationPipe } from '@nestjs/common';
+
+async function bootstrap() {
+  const app = await NestFactory.create(AppModule);
+  app.useGlobalPipes(new ValidationPipe());
+  await app.listen(3000);
+}
+bootstrap();
+```
+
+```bash
+npm i @nestjs/mapped-types
+```
+
+
+## 21/23 Cómo evitar parámetros incorrectos
+La opción de whitelist, niega o quita todos los elementos que no esten definidos en el DTO
+```ts
+app.useGlobalPipes(new ValidationPipe({
+    whitelist: true
+}));
+```
+Esto descartara los datos que no esten en el dto, asi que limpiara todo el objeto que se envie.
+
+la opción de _forbidNonWhitelisted: true_ Permite indicarle al usuario que existe un valor que no esta en el dto.
+
+
+## 23/23 Continúa con el Curso de NestJS: Programación Modular
+# Fin
